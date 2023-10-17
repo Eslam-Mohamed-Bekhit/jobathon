@@ -6,21 +6,21 @@ function App() {
   const [notes, setNotes] = useState([
     {
       id: 1,
-      text: "This is my first note",
+      text: " first note",
       date: "07/9/2023",
       active: false,
       done: false
     },
     {
       id: 2,
-      text: "This is my second note",
+      text: " my second note all with date",
       date: "03/10/2023",
       active: false,
       done: false
     },
     {
       id: 3,
-      text: "This is my third note",
+      text: "note",
       date: "03/5/2023",
       active: false,
       done: false
@@ -29,6 +29,8 @@ function App() {
   ]);
 
   const [searchNote, setSearchNote] = useState('');
+
+
 
 
 
@@ -47,10 +49,7 @@ function App() {
 
 
 
-
- 
-
-
+  
 
   const editNote = (text, id, active, done) => {
     console.log("fr::", text, id)
