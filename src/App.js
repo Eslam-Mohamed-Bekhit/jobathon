@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import Notes from './components/Notes'
 import Search from './components/Search';
-
+import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
 function App() {
   const [notes, setNotes] = useState([
     {
       id: 1,
       text: " first note",
-      date: "07/9/2023",
+      date:"10/17/2023 | 1:04:32 PM",
       active: false,
       done: false
     },
     {
       id: 2,
       text: " my second note all with date",
-      date: "03/10/2023",
+      date: "10/17/2023 | 1:04:32 PM",
       active: false,
       done: false
     },
     {
       id: 3,
       text: "note",
-      date: "03/5/2023",
+      date: "10/17/2023 | 1:04:32 PM",
       active: false,
       done: false
     },
@@ -29,8 +29,8 @@ function App() {
   ]);
 
   const [searchNote, setSearchNote] = useState('');
-
-
+  const [current, setCurrent] = useState(0);
+  const [pagesNotes, setPagesNotes] = useState(4);
 
 
 
@@ -47,13 +47,23 @@ function App() {
     localStorage.setItem('data', JSON.stringify(notes))
   }, [notes])
 
+const handelPage = (direction)=>{
+let shallowNotes = notes;
+
+if(direction === 'next'){
+  /* if(direction === 'next' && shallowNotes.length()> 4 ){ shallowNotes.slice(current,current+pagesNotes)
+    setCurrent(prev=>prev+4)
+    console.log(current,shallowNotes)} */
+    return null
+
+}
 
 
-  
+}
+
 
   const editNote = (text, id, active, done) => {
-    console.log("fr::", text, id)
-    const date = new Date();
+    const date = new Date(); 
     const newNote = {
       id, text: text, date: date.toLocaleDateString() + " | " + date.toLocaleTimeString(), active,
       done
@@ -67,7 +77,7 @@ function App() {
   const addNote = (text) => {
     const date = new Date();
     const newNote = {
-      id: Math.floor(Math.random*15), text: text, date: date.toLocaleDateString() + " | " + date.toLocaleTimeString(), active: false,
+      id: Math.floor(Math.random()*15), text: text, date: date.toLocaleDateString() + " | " + date.toLocaleTimeString(), active: false,
       done: false
     }
     const newNotes = [...notes, newNote]
@@ -89,7 +99,10 @@ function App() {
 
         <Notes handleEdit={editNote} notes={notes.filter((note) => note.text.toLowerCase().includes(searchNote))} handleAddNote={addNote} handleDelete={deletingNote} />
         <Search handleSearch={setSearchNote} />
-
+          <div className='pagination'> 
+            <AiOutlineArrowLeft  onClick={()=>handelPage('next')} />
+            <AiOutlineArrowRight onClick={()=>handelPage('pre')}  />
+          </div>
       </div>
 
     </div>

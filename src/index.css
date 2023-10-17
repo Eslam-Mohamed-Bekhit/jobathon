@@ -11,6 +11,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+
 }
 
 code {
@@ -18,11 +20,7 @@ code {
     monospace;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 .container {
   max-width: 960px;
@@ -133,9 +131,7 @@ textarea:focus {
   min-height: 100vh;
 }
 
-.dark-mode h1 {
-  color: white;
-}
+
 
 small {
   font-weight: 400;
@@ -148,3 +144,15 @@ small {
   color: #00e500;
   font-size: larger;
 }
+.pagination{
+ display: flex;
+ align-items: center;
+ justify-content: space-evenly; 
+ color: white;
+ cursor: pointer;
+margin: 50px auto;
+}
+
+
+
+
